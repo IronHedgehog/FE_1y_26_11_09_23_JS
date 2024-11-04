@@ -75,5 +75,15 @@ const undef = undefined;
 // метод - це дія
 // щоб викликати дію ми маємо записати круглі дужки
 console.error("Error");
-window.alert("Привіт");
+// window.alert("Привіт");
 // window.confirm("Привіт?");
+
+const namme = prompt("Введіть імʼя");
+
+// alert("Дякуєм за покупку " + namme);
+// alert(`Дякуєм за покупку ${namme}`);
+// Властивість
+// alert("Кількість буковок(Довжина рядка) = " + namme.length);
+// alert("Чи є А велика? = " + namme.includes("A"));
+
+alert("Привіт");
