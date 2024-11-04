@@ -1,89 +1,92 @@
-// що таке змінна - коробочка в яку ми можемо зберігти будь-яке значення
-// Змінна збергіється в памʼяті
-// Для того щоб виділити памʼять під зберігання чого небудь вам необхідно знати два слова const та let
+// Математичні оператори
 
-// const - не змінюють своє значення
-const name = "Artem";
+// + - / *  - звичайні
 
-let age = 23;
+// % - остача від ділення, ** - піднесення до ступеню
 
-age = age + 1;
+const number1 = 8;
+const number2 = 3;
 
-console.log(age);
-// .log() - дозволяє вивести в консоль повідомлення
-console.log("Hello world!");
+// console.log(number1 + number2); // number1 = 10, number2 = 7 = 17
+// console.log(number1 - number2); // number1 = 10, number2 = 7 = 17
+// console.log(number1 * number2); // number1 = 10, number2 = 7 = 17
+// console.log(number1 / number2); // number1 = 10, number2 = 7 = 17
+// console.log(number1 % number2); // number1 = 10, number2 = 7 = 17
+// console.log(number1 ** number2); // number1 = 10, number2 = 7 = 17
 
-const multiply = 2 ** 10;
+// Оператори порівняння
 
-console.log(multiply);
+// > => <= <
 
-// Типи даних
+//  == === !== !=
 
-//
+// КОли ви порівнюєте ви завжди отримуєте boolean (true or false)
 
-const string = "asdqwezxc";
+// console.log(number1 > number2); // 8 > 3 - true
+// console.log(number1 >= number2); // 8 >= 3 - true
+// console.log(number1 <= number2); // 8 <= 3 - false
+// console.log(number1 < number2); // 8 < 3 - false
 
-const number = 10;
-// Правда не правда , так або ні
-const boolean = true || false;
+// console.log(number1 == number2); // 8 == 3 -false
+// // == - рівність (Значення мають бути рівними)
+// console.log("8" == 8); // "8" == 8 - true
+// // === - сувора рівність (типи даних мають співпадати, значння мають співпадати)
+// console.log("8" === 8); // 8 == 3 - false
 
-console.log(1 < 10); // true
+// console.log("8" != 8);
+// console.log("8" !== 8);
 
-console.log(1 > 10); // false
+// console.log(8 + "8"); // = 88
 
-console.log(2 ** 53 + 1);
-console.log(2 ** 53 + 3);
-// bigint -
-// typeof - показує тип даних
-console.log(typeof 9007199254740994n);
+// приведення до числа
 
-const nulll = null;
+// Number
+const number3 = "30";
 
-console.log(null);
+console.log(typeof number3);
 
-const undef = undefined;
+console.log(typeof Number(number3));
 
-// alert,prompt,confirm
-//
-// alert("Сервер барахлить");
+const age = "abcAhaha15";
+// console.log(Number(age)); // Not a Number
+// Перебирає строку і отримує з неї ціле число з початку рядка
+// console.log(Number.parseInt(age));
 
-// методи вводу
+const kg = "10.56.10kg";
 
-// const message = prompt("Скільки вам років?");
+// console.log(Number.parseInt(kg));
+// console.log(Number.parseFloat(kg));
 
-// console.log(typeof message);
+//перевірка на число
 
-// const isOk = confirm("Чи погоджуєтесь ви з правилами поведінки на сайті?"); // boolean - true || false
+// isNaN
 
-// console.log(isOk);
+const number4 = "abc";
+// Чи число яке я передав дорівнює NaN
+console.log(!Number.isNaN(10));
 
-// Тут питання Створити скрипт який виводить спливаюче попередження за допомогою alert(). Вивести повідомлення про те, що дія небезпечна та попросити користувача підтвердити дію за допомогою confirm(). Якщо користувач підтверджує дію, вивести повідомлення "Дякую за підтвердження!". Якщо користувач відмовляється, вивести повідомлення .
+console.log((0.1 * 10 + 0.2 * 10) / 10);
+console.log(0.1 + 0.2);
 
-// розгалудження коду
+const number5 = 10.1;
 
-// alert("дія небезпечна");
+// MATH
+// floor - округлення до меншого цілого числа
+console.log(Math.floor(number5));
+// .round - округлення за правилами математики
+console.log(Math.round(number5));
 
-// let userChose = confirm("підтвердити дію?");
-// console.log(event);
+//Math.ceil - округлення до більшого
+console.log(Math.ceil(number5));
 
-// if (userChose === true) {
-//   alert("Дякую за підтвердження!");
-// } else {
-//   alert("Дію відмінено!");
-// }
+// Math.random() - дозволяє зарандомити випадкове число
+console.log(Math.floor(Math.random() * 5 + 1));
+// піднесення до ступеню
+console.log(Math.pow(20, 2));
 
-// метод - це дія
-// щоб викликати дію ми маємо записати круглі дужки
-console.error("Error");
-// window.alert("Привіт");
-// window.confirm("Привіт?");
+console.log(20 ** 2);
 
-const namme = prompt("Введіть імʼя");
+console.log(Math.max(200, 100, 400, 300, 230402));
+console.log(Math.min(200, 100, 400, 300, 230402));
 
-// alert("Дякуєм за покупку " + namme);
-// alert(`Дякуєм за покупку ${namme}`);
-// Властивість
-// alert("Кількість буковок(Довжина рядка) = " + namme.length);
-// alert("Чи є А велика? = " + namme.includes("A"));
-
-alert("Привіт");
+console.log(Math.PI);
