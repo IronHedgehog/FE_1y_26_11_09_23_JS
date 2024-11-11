@@ -1,92 +1,84 @@
-// Математичні оператори
+// 1. Створити змінні celsius, fahrenheit для зберігання температури за Цельсієм та
+// Фаренгейтом. Перевести температуру з Цельсія у Фаренгейти за допомогою
+// формули та вивести результат в консоль.
 
-// + - / *  - звичайні
+let celsius = 5;
 
-// % - остача від ділення, ** - піднесення до ступеню
+const fahrenheit = (celsius * 9) / 5 + 32;
 
-const number1 = 8;
-const number2 = 3;
+console.log(fahrenheit);
 
-// console.log(number1 + number2); // number1 = 10, number2 = 7 = 17
-// console.log(number1 - number2); // number1 = 10, number2 = 7 = 17
-// console.log(number1 * number2); // number1 = 10, number2 = 7 = 17
-// console.log(number1 / number2); // number1 = 10, number2 = 7 = 17
-// console.log(number1 % number2); // number1 = 10, number2 = 7 = 17
-// console.log(number1 ** number2); // number1 = 10, number2 = 7 = 17
+const js = "asdaqweazxc";
 
-// Оператори порівняння
+console.log(js.length - 1);
+// .indexOf - шукає перше співпадіння
+// чутливий до регістру
+// indexOf - не знайшов елемент він виводить -1
+console.log(js.toLowerCase().indexOf("a", 5));
 
-// > => <= <
+const a = 1;
 
-//  == === !== !=
+const b = "1";
 
-// КОли ви порівнюєте ви завжди отримуєте boolean (true or false)
+const c = 1;
+// конкатинація
+// 1) a + b  = строка 11
+// 2)b + c = строка 11 + (конкатинація{додавання} рядків) число 1
+console.log(a + b + c); //111
 
-// console.log(number1 > number2); // 8 > 3 - true
-// console.log(number1 >= number2); // 8 >= 3 - true
-// console.log(number1 <= number2); // 8 <= 3 - false
-// console.log(number1 < number2); // 8 < 3 - false
+// const name = prompt("Введіть імʼя");
 
-// console.log(number1 == number2); // 8 == 3 -false
-// // == - рівність (Значення мають бути рівними)
-// console.log("8" == 8); // "8" == 8 - true
-// // === - сувора рівність (типи даних мають співпадати, значння мають співпадати)
-// console.log("8" === 8); // 8 == 3 - false
+// alert("Привіт " + name);
+// length - властивість , яка повертає довжину рядка
+const superLongString = "SuperLongWord";
 
-// console.log("8" != 8);
-// console.log("8" !== 8);
+console.log(superLongString.length);
+// .toLowerCase() - приводить усе до маленьких літер
+console.log(superLongString.toLowerCase());
+// .toLowerCase() - приводить усе до великих літер
+console.log(superLongString.toUpperCase());
 
-// console.log(8 + "8"); // = 88
+const spamWord = "sale";
 
-// приведення до числа
+const message = "super SALLE today";
 
-// Number
-const number3 = "30";
+// .includes - перевірив чи є у рядку spamWord
+// Повертає boolean type (true or false)
+// .includes - чутливий до регістру (маленькі та великі букви)
 
-console.log(typeof number3);
+if (message.toLowerCase().includes(spamWord)) {
+  console.log("Тут є спам, треба видалить");
+} else {
+  console.log("Спаму немає, можна показувать користувачу");
+}
 
-console.log(typeof Number(number3));
+const string1 = "Hello, world";
 
-const age = "abcAhaha15";
-// console.log(Number(age)); // Not a Number
-// Перебирає строку і отримує з неї ціле число з початку рядка
-// console.log(Number.parseInt(age));
+string1.toLowerCase();
+// .startsWith - МОжемо перевірити з чого складаєься початок речення
+console.log(string1.toLowerCase().startsWith("e"));
+console.log(string1.toLowerCase().endsWith(".com"));
 
-const kg = "10.56.10kg";
+const name1 = "       Artem       ";
+// trim() - обрізає пробіли з початку та кінця
+console.log(name1);
+console.log(name1.trim());
 
-// console.log(Number.parseInt(kg));
-// console.log(Number.parseFloat(kg));
+// const
+const minutes = "34400000";
 
-//перевірка на число
+const string2 = "qweasdzxc";
 
-// isNaN
+console.log(minutes.padStart(2, "0"));
+console.log(string2.padEnd(20, "..."));
 
-const number4 = "abc";
-// Чи число яке я передав дорівнює NaN
-console.log(!Number.isNaN(10));
+const abc = "abc";
 
-console.log((0.1 * 10 + 0.2 * 10) / 10);
-console.log(0.1 + 0.2);
+const qwe = "qwe";
 
-const number5 = 10.1;
+console.log(abc + qwe);
 
-// MATH
-// floor - округлення до меншого цілого числа
-console.log(Math.floor(number5));
-// .round - округлення за правилами математики
-console.log(Math.round(number5));
+// const summ = prompt("Введіть суму яку бажаєте витратити");
+// const name2 = prompt(" Введіть імʼя");
 
-//Math.ceil - округлення до більшого
-console.log(Math.ceil(number5));
-
-// Math.random() - дозволяє зарандомити випадкове число
-console.log(Math.floor(Math.random() * 5 + 1));
-// піднесення до ступеню
-console.log(Math.pow(20, 2));
-
-console.log(20 ** 2);
-
-console.log(Math.max(200, 100, 400, 300, 230402));
-console.log(Math.min(200, 100, 400, 300, 230402));
-
-console.log(Math.PI);
+// console.log(`Привіт, ${name2} ти зробив замовлення на ${summ} грн`);
