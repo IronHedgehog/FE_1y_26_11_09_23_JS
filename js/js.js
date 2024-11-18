@@ -82,3 +82,13 @@ console.log(abc + qwe);
 // const name2 = prompt(" Введіть імʼя");
 
 // console.log(`Привіт, ${name2} ти зробив замовлення на ${summ} грн`);
+
+//Отримуєм поточну кількість хвилин 1000
+// 1000
+const hours = Math.floor(1100 / 60);
+const minutesLeft = 1030 % 60;
+console.log(typeof minutesLeft);
+
+const formatMinutes = minutesLeft.toString().padStart(2, "0");
+const formatHours = hours.toString().padStart(2, "0");
+console.log(`${formatHours} ${formatMinutes}`);
