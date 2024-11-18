@@ -1,94 +1,72 @@
-// 1. Створити змінні celsius, fahrenheit для зберігання температури за Цельсієм та
-// Фаренгейтом. Перевести температуру з Цельсія у Фаренгейти за допомогою
-// формули та вивести результат в консоль.
+console.log(true && false); // false
+console.log(0 && 1); // 0
+// && - вимагає щоб усі умови виконувались або повертає елемент на якому все зламалось
 
-let celsius = 5;
+console.log(false || true || false); //true
+console.log("" || "false" || 1); //
 
-const fahrenheit = (celsius * 9) / 5 + 32;
+console.log((!false && "Petro") || ("Mykola" && !"")); //
 
-console.log(fahrenheit);
+// || - вимагає,щоб хоча б одна умова була вірною - повертає першу правду
 
-const js = "asdaqweazxc";
+const num = 20;
 
-console.log(js.length - 1);
-// .indexOf - шукає перше співпадіння
-// чутливий до регістру
-// indexOf - не знайшов елемент він виводить -1
-console.log(js.toLowerCase().indexOf("a", 5));
+// range - перевірка чи входить в певний діапазон наше число
+const result = num >= 1 && num <= 20;
 
-const a = 1;
+console.log(result); // false
 
-const b = "1";
+console.log(!0); // true
+console.log(!1); // false
 
-const c = 1;
-// конкатинація
-// 1) a + b  = строка 11
-// 2)b + c = строка 11 + (конкатинація{додавання} рядків) число 1
-console.log(a + b + c); //111
+//
 
-// const name = prompt("Введіть імʼя");
+// false &&  (і шось ще що опертаор і навіть читати не буде)
+// бачить перше true вам його повертає все інше навіть не дивиться
+// true || (шось ще)
 
-// alert("Привіт " + name);
-// length - властивість , яка повертає довжину рядка
-const superLongString = "SuperLongWord";
+// РОЗГАЛУДЖЕННЯ
 
-console.log(superLongString.length);
-// .toLowerCase() - приводить усе до маленьких літер
-console.log(superLongString.toLowerCase());
-// .toLowerCase() - приводить усе до великих літер
-console.log(superLongString.toUpperCase());
+// ЯКЩО
+// 'Petro" - true
+// Коли if перевіряє умову у круглих дужках то він все що там є автоматично приводить до boolean
 
-const spamWord = "sale";
+const subscribe = true;
 
-const message = "super SALLE today";
-
-// .includes - перевірив чи є у рядку spamWord
-// Повертає boolean type (true or false)
-// .includes - чутливий до регістру (маленькі та великі букви)
-
-if (message.toLowerCase().includes(spamWord)) {
-  console.log("Тут є спам, треба видалить");
+// все що потрапляє до круглих дужок if перетврюється на boolean
+if (subscribe === true) {
+  console.log("Petro");
 } else {
-  console.log("Спаму немає, можна показувать користувачу");
+  console.log("Не Петро");
 }
 
-const string1 = "Hello, world";
+let cost;
+const sub = "yes";
 
-string1.toLowerCase();
-// .startsWith - МОжемо перевірити з чого складаєься початок речення
-console.log(string1.toLowerCase().startsWith("e"));
-console.log(string1.toLowerCase().endsWith(".com"));
+// ELSE IF|
 
-const name1 = "       Artem       ";
-// trim() - обрізає пробіли з початку та кінця
-console.log(name1);
-console.log(name1.trim());
+if (sub === "free") {
+  cost = 0;
+} else if (sub === "pro") {
+  cost = 199;
+} else if (sub === "Premium") {
+  cost = 500;
+} else {
+  console.log("Такої підписки ще нема у продажі злий хацкер");
+}
 
-// const
-const minutes = "34400000";
+console.log(cost);
 
-const string2 = "qweasdzxc";
+// Тернарний (потрійний) оператор
 
-console.log(minutes.padStart(2, "0"));
-console.log(string2.padEnd(20, "..."));
+const type = "button";
 
-const abc = "abc";
+console.log(
+  type === "button" ? console.log("Кнопка") : console.log("Ти не кнопка")
+);
 
-const qwe = "qwe";
-
-console.log(abc + qwe);
-
-// const summ = prompt("Введіть суму яку бажаєте витратити");
-// const name2 = prompt(" Введіть імʼя");
-
-// console.log(`Привіт, ${name2} ти зробив замовлення на ${summ} грн`);
-
-//Отримуєм поточну кількість хвилин 1000
-// 1000
-const hours = Math.floor(1100 / 60);
-const minutesLeft = 1030 % 60;
-console.log(typeof minutesLeft);
-
-const formatMinutes = minutesLeft.toString().padStart(2, "0");
-const formatHours = hours.toString().padStart(2, "0");
-console.log(`${formatHours} ${formatMinutes}`);
+if (type === "button") {
+  console.log("Ти кнопка");
+} else {
+  console.log("Ти не кнопка");
+}
