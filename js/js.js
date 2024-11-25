@@ -70,3 +70,9 @@ if (type === "button") {
 } else {
   console.log("Ти не кнопка");
 }
+
+const name = "Artem";
+
+const string = `Привіт, ${name}`;
+
+
