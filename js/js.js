@@ -1,78 +1,68 @@
-console.log(true && false); // false
-console.log(0 && 1); // 0
-// && - вимагає щоб усі умови виконувались або повертає елемент на якому все зламалось
+// BOM - браузерна модель документа
 
-console.log(false || true || false); //true
-console.log("" || "false" || 1); //
+// console.log(navigator);
 
-console.log((!false && "Petro") || ("Mykola" && !"")); //
+// if (navigator.geolocation) {
+//   const coords = navigator.geolocation.getCurrentPosition(
+//     (position) => {
+//       console.log(position);
+//     },
+//     (error) => {
+//       console.log(error.message);
+//       console.log(navigator.language);
+//     }
+//   );
+//   console.log(coords);
+// } else {
+//   console.log("Ваш браузер не підтримує");
+// }
 
-// || - вимагає,щоб хоча б одна умова була вірною - повертає першу правду
+// const browserInfo = `Браузер ${navigator.appCodeName}, ${navigator.appVersion}`;
 
-const num = 20;
+// console.log(browserInfo);
 
-// range - перевірка чи входить в певний діапазон наше число
-const result = num >= 1 && num <= 20;
+// DOM
+// querySelector - пошуковий метод який знаходить перше співпадіння після чого припиняє пошуки
+const input1 = document.querySelector("#input1");
+const input2 = document.querySelector(".input2");
+const button = document.querySelector(`.form [type="button"]`);
+const buttons = document.querySelectorAll(`[type="button"]`);
+const form = document.querySelector(".form");
+const h1 = document.getElementById("h1");
+console.log(input1);
+console.log(input2);
+console.log(button);
+console.log(buttons);
 
-console.log(result); // false
+console.log(input1.value);
+console.log(input2.value);
 
-console.log(!0); // true
-console.log(!1); // false
+// input1.value = "abc";
+// input2.value = "qwe";
 
-//
-
-// false &&  (і шось ще що опертаор і навіть читати не буде)
-// бачить перше true вам його повертає все інше навіть не дивиться
-// true || (шось ще)
-
-// РОЗГАЛУДЖЕННЯ
-
-// ЯКЩО
-// 'Petro" - true
-// Коли if перевіряє умову у круглих дужках то він все що там є автоматично приводить до boolean
-
-const subscribe = true;
-
-// все що потрапляє до круглих дужок if перетврюється на boolean
-if (subscribe === true) {
-  console.log("Petro");
+if (input1.value && input2.value) {
+  console.log("Значення є");
+  input1.style.backgroundColor = "green";
+  input2.style.backgroundColor = "green";
 } else {
-  console.log("Не Петро");
+  // input1.style.backgroundColor = "red";
+  // input2.style.backgroundColor = "red";
+
+  input1.classList.add("inputtt");
+  input2.classList.add("inputtt");
+  // input2.classList.remove("inputtt");
+  // input2.classList.toggle("inputtt");
+  // true or false
+  console.log(input2.classList.contains("inputtt")); // метод який робить все навпаки
+  console.log("Значень немає");
 }
+// textContent - показує текстове наповнення тегу(DOM-вузла)
+console.log(h1.textContent);
 
-let cost;
-const sub = "yes";
+h1.textContent = "Допобачення";
+// children - повертає всі детячі елементи
+console.log(form.children);
 
-// ELSE IF|
-
-if (sub === "free") {
-  cost = 0;
-} else if (sub === "pro") {
-  cost = 199;
-} else if (sub === "Premium") {
-  cost = 500;
-} else {
-  console.log("Такої підписки ще нема у продажі злий хацкер");
-}
-
-console.log(cost);
-
-// Тернарний (потрійний) оператор
-
-const type = "button";
-
-console.log(
-  type === "button" ? console.log("Кнопка") : console.log("Ти не кнопка")
-);
-
-if (type === "button") {
-  console.log("Ти кнопка");
-} else {
-  console.log("Ти не кнопка");
-}
-
-const name = "Artem";
-
-const string = `Привіт, ${name}`;
-
-
+console.log(form.lastElementChild);
+console.log(form.nextElementSibling);
+console.log(form.previousElementSibling);
