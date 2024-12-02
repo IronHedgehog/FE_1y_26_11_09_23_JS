@@ -1,68 +1,74 @@
-// BOM - браузерна модель документа
-
-// console.log(navigator);
-
-// if (navigator.geolocation) {
-//   const coords = navigator.geolocation.getCurrentPosition(
-//     (position) => {
-//       console.log(position);
-//     },
-//     (error) => {
-//       console.log(error.message);
-//       console.log(navigator.language);
-//     }
-//   );
-//   console.log(coords);
-// } else {
-//   console.log("Ваш браузер не підтримує");
-// }
-
-// const browserInfo = `Браузер ${navigator.appCodeName}, ${navigator.appVersion}`;
-
-// console.log(browserInfo);
-
-// DOM
-// querySelector - пошуковий метод який знаходить перше співпадіння після чого припиняє пошуки
-const input1 = document.querySelector("#input1");
-const input2 = document.querySelector(".input2");
-const button = document.querySelector(`.form [type="button"]`);
-const buttons = document.querySelectorAll(`[type="button"]`);
+// const button = document.getElementById("button");
+// 1- знайти елемент(отримати посилання на html елемент який вас цікавить)
+const button = document.querySelector(".button");
+const input = document.querySelector("#input");
 const form = document.querySelector(".form");
-const h1 = document.getElementById("h1");
-console.log(input1);
-console.log(input2);
-console.log(button);
-console.log(buttons);
+const check = document.querySelector("#check");
+// .addEventListener - додати слухача події
+// 2 - Після того як ми знайшли елемент  ми маємо повісити на нього слухач події(addEventListener)
+button.addEventListener("click", onClick);
+// e - обʼєкт події
+let counter = 0;
+// 3- Створити функцію(обробник події) з вказівками як js має реагувати на цю подію
+function onClick(event) {
+  // target - це елемент на якому відбулась подія
+  console.log(event.target);
+  counter++;
 
-console.log(input1.value);
-console.log(input2.value);
-
-// input1.value = "abc";
-// input2.value = "qwe";
-
-if (input1.value && input2.value) {
-  console.log("Значення є");
-  input1.style.backgroundColor = "green";
-  input2.style.backgroundColor = "green";
-} else {
-  // input1.style.backgroundColor = "red";
-  // input2.style.backgroundColor = "red";
-
-  input1.classList.add("inputtt");
-  input2.classList.add("inputtt");
-  // input2.classList.remove("inputtt");
-  // input2.classList.toggle("inputtt");
-  // true or false
-  console.log(input2.classList.contains("inputtt")); // метод який робить все навпаки
-  console.log("Значень немає");
+  if (counter === 1) {
+    button.removeEventListener("click", onClick);
+  }
+  console.log(`Я клікнув ${counter} разів`);
 }
-// textContent - показує текстове наповнення тегу(DOM-вузла)
-console.log(h1.textContent);
 
-h1.textContent = "Допобачення";
-// children - повертає всі детячі елементи
-console.log(form.children);
+// 1- знайти елемент(отримати посилання на html елемент який вас цікавить)
+// 2 - Після того як ми знайшли елемент  ми маємо повісити на нього слухач події(addEventListener)
+// 3- Створити функцію(обробник події) з вказівками як js має реагувати на цю подію
+// input - ввід тексту
+input.addEventListener("input", onInput);
 
-console.log(form.lastElementChild);
-console.log(form.nextElementSibling);
-console.log(form.previousElementSibling);
+function onInput(e) {
+  const inputValue = e.target.value;
+
+  console.log(inputValue);
+}
+
+form.addEventListener("submit", onFormSubmit);
+
+function onFormSubmit(e) {
+  // КОли ми відправляємо форму то сторінка за замовчуванням самотсійно оновлюється,щоб цьому запобігти ми використовуємо   e.preventDefault(); - що означає заблокувати поведінку за замовчуванням
+  e.preventDefault();
+  const emailValue = e.target.elements.email.value;
+  const passwordValue = e.target.elements.password.value;
+  console.log(emailValue);
+  console.log(passwordValue);
+}
+// Подія активації інтерактивного елементу
+input.addEventListener("focus", onFocus);
+
+function onFocus(e) {
+  input.style.border = "1px solid red";
+  input.style.outline = "none";
+}
+// blur - подія втрати фокусу
+input.addEventListener("blur", onBlur);
+
+function onBlur(e) {
+  const value = e.target.value;
+  if (value.length < 6) {
+    console.log("Пароль занадто слабкий");
+    input.style.border = "1px solid red";
+  } else {
+    input.style.border = "none";
+    input.style.outline = "1px solid black";
+  }
+}
+// 
+check.addEventListener("change", onChange);
+
+function onChange(e) {
+  console.log(e.target.checked);
+  if (!e.target.checked) {
+    button.disabled = true;
+  }
+}
