@@ -1,9 +1,0 @@
-.inputtt {
-  outline: 1px solid red;
-  border: 5px solid red;
-}
-
-.button:disabled {
-  background-color: white;
-  color: black;
-}
