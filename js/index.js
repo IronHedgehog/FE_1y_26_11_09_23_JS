@@ -1,77 +1,75 @@
-// Повідомити JS що елемент існує(знайти посилання на нього)
-// querySelector
-// querySelectorAll
-// getElementById
+// В масиві може бути, що завгодно
+// Масиви містять однотипний вміст
+const array = ["Artem", 15, false, null, undefined];
+const names = ["Artem", "Petro", "Anton"];
+const grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-const heading = document.getElementById("qwe");
+// щоб отримати довжину масиву ми використовуємо властивість length
+// всі індекси розразовуються з 0
+// Індекс завжди на 1 менший за довжину
+console.log(grades.length);
 
-console.log(heading);
-//Що зробити з знайденим елементом?
-// При кліку змінювати текст заголовку
-// При кліку
-// змінювати текст заголовку
+// Як витягнути значення з масиву
+console.log(grades[0]);
 
-heading.addEventListener("click", onClick);
+names.length = 100;
+names.length = 1;
+//
 
-function onClick(e) {
-  const startContent = heading.textContent;
-  switch (startContent) {
-    case "Hello world":
-      heading.textContent = "Hello,Artem!";
-      break;
-
-    case "Hello,Artem!":
-      heading.textContent = "Hello world";
-      break;
-
-    default:
-      heading.textContent = "Привіт, анонім";
-      break;
-  }
-}
-
-// ЦИКЛИ
-
-//for - ключове слово яке дозволяє створити цикл
-//let index = 0;  - створили змінну index і присвоїли значення 0 (лічильник)
-//index < array.length; - умова завершення циклу(як тільки умова не виконується цикл зупиняється)
-//index++; - додавання одинички до змінної index(спрацьовує кожної ітерації)
-// ітерація - виконання циклу один раз
-
-for (let index = 0; index <= 100; index = index + 101) {
-  console.log(index);
-}
+// i < grades.length - поки індекс менший за довжину масиву
 
 let counter = 0;
 
-while (counter <= 10) {
-  console.log(counter);
-  counter++;
+for (let i = 0; i < grades.length; i++) {
+  const grade = grades[i];
+  counter += grade;
 }
 
-let clients = 2;
-const maxClients = 30;
+console.log(counter);
+// for of - не має індексу
 
-while (clients < maxClients) {
-  console.log(clients);
-  clients++;
+for (const grade of grades) {
+  counter -= grade;
 }
 
-// let authorize = false;
+console.log(counter);
 
-// while (authorize !== true) {
-//   let value = prompt("Введіть нік для реєстрації");
-//   if (value === "Artem") {
-//     authorize = true;
-//     break;
-//   } else {
-//     value = prompt("Введіть  правильний нік для реєстрації");
-//   }
-// }
+const numbers = [];
 
-for (let index = 0; index < 100; index++) {
-  if (index % 2 === 1) {
-    continue; // пропустити та продовжити з наступного елементу
+for (let i = 0; i < 10000; i++) {
+  // numbers[i] - numbers - назва масиву [i] - індекс масиву
+  numbers[i] = i + 1;
+}
+
+const randomWinner = Math.floor(Math.random() * 10000);
+
+for (let i = 0; i < numbers.length; i++) {
+  if (i === randomWinner) {
+    console.log(`Переміг ${i}`);
+    break;
   }
-  console.log(index);
+}
+
+const matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
+
+let counter1 = 0;
+
+for (let i = 0; i < matrix.length; i++) {
+  const matrixEl = matrix[i];
+  for (let j = 0; j < matrixEl.length; j++) {
+    const element = matrixEl[j];
+    counter1 += element;
+  }
+}
+
+console.log(counter1);
+
+const name = "Artem";
+
+for (const letter of name) {
+  console.log(letter);
 }
