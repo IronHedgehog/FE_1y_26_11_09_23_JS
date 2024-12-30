@@ -1,75 +1,82 @@
-// В масиві може бути, що завгодно
-// Масиви містять однотипний вміст
-const array = ["Artem", 15, false, null, undefined];
-const names = ["Artem", "Petro", "Anton"];
-const grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const array = ["Привіт", "Світ", "asd", "qwe"];
 
-// щоб отримати довжину масиву ми використовуємо властивість length
-// всі індекси розразовуються з 0
-// Індекс завжди на 1 менший за довжину
-console.log(grades.length);
+console.log(array.join(","));
 
-// Як витягнути значення з масиву
-console.log(grades[0]);
+const message = ["Вітаю", "Ви", "виграли", "в", "лотерею"];
 
-names.length = 100;
-names.length = 1;
+console.log(message.join(" "));
+
+const string = "Привіт,Фві, фівщлзфів";
+// split - метод строки який дозволяє перетворити строку в масив за розділювачем
+console.log(string.split(","));
+
+const arr1 = [1, 2, 3, 4, 5];
+
+console.log(arr1.indexOf(3));
+
+console.log(arr1.includes(6));
+
+const names = ["Petro", "Artem", "Mykola"];
+
+if (names.includes("Artem")) {
+  console.log("Запускаєм код");
+}
+
+// ------------------------  PUSH,POP,SHIFT,UNSHIFT ----------------------//
+
+const number = [1, 2, 3, 4, 5];
+// Метод пуш повертає кількість елементів в масиві
+number.push(6, 7, 8, 9, 10);
+
+console.log(number);
+// pop - Видаляє елемент з кінця масиву та повератає вам видалений елемент
+console.log(number.pop());
+
+console.log(number);
+
+number.unshift(0);
+
+console.log(number);
+// shift - він дозволяє видаляти з початку масиву
+number.shift();
+
+console.log(number);
+
+// -------------------------- SLICE ,SPLICE --------------------------- //
+
 //
+const newNumbers = number.slice();
 
-// i < grades.length - поки індекс менший за довжину масиву
+newNumbers.push(11, 12, 13, 14, 15);
 
-let counter = 0;
+const startNumbers = newNumbers.slice(0, 5);
+console.log(number);
+console.log(startNumbers);
+console.log(newNumbers);
 
-for (let i = 0; i < grades.length; i++) {
-  const grade = grades[i];
-  counter += grade;
-}
+const spliceNumbers = newNumbers.splice(
+  5,
+  7,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26
+);
 
-console.log(counter);
-// for of - не має індексу
+console.log(spliceNumbers);
+console.log(newNumbers);
 
-for (const grade of grades) {
-  counter -= grade;
-}
+const number1 = [1, 2, 3, 4, 5];
+const number2 = [6, 7, 8, 9, 10];
+const number3 = [11, 12, 13, 14, 15];
 
-console.log(counter);
+const number1PlusNumber2 = number2.concat(number1, number3);
 
-const numbers = [];
-
-for (let i = 0; i < 10000; i++) {
-  // numbers[i] - numbers - назва масиву [i] - індекс масиву
-  numbers[i] = i + 1;
-}
-
-const randomWinner = Math.floor(Math.random() * 10000);
-
-for (let i = 0; i < numbers.length; i++) {
-  if (i === randomWinner) {
-    console.log(`Переміг ${i}`);
-    break;
-  }
-}
-
-const matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
-
-let counter1 = 0;
-
-for (let i = 0; i < matrix.length; i++) {
-  const matrixEl = matrix[i];
-  for (let j = 0; j < matrixEl.length; j++) {
-    const element = matrixEl[j];
-    counter1 += element;
-  }
-}
-
-console.log(counter1);
-
-const name = "Artem";
-
-for (const letter of name) {
-  console.log(letter);
-}
+console.log(number1PlusNumber2);
