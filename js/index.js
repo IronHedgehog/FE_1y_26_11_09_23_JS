@@ -1,87 +1,78 @@
-const array = ["Привіт", "Світ", "asd", "qwe"];
+getSum();
 
-console.log(array.join(","));
+// function - створи(задекларуй) нам функцію
+// name - імʼя функції (англ.букв. get put patch post, )
+// (params) - це те що наша функція отримує ззовні для роботи
+//{} - тіло функції, де ми записуєм код який має виконатись при виклику
 
-const message = ["Вітаю", "Ви", "виграли", "в", "лотерею"];
+const function2 = function () {
+  console.log("Початок виконання функції2");
+};
 
-console.log(message.join(" "));
+// Функціональний вираз
+const function1 = function () {
+  console.log("Початок виконання функції1");
+  function2();
+  console.log("Продовження виконання коду функції1");
+};
 
-const string = "Привіт,Фві, фівщлзфів";
-// split - метод строки який дозволяє перетворити строку в масив за розділювачем
-console.log(string.split(","));
+console.log("Виконання основного коду");
 
-const arr1 = [1, 2, 3, 4, 5];
+function1();
 
-console.log(arr1.indexOf(3));
-
-console.log(arr1.includes(6));
-
-const names = ["Petro", "Artem", "Mykola"];
-
-if (names.includes("Artem")) {
-  console.log("Запускаєм код");
+console.log(" Продовження виконнання основного коду");
+// a, b - параметри які ми отримуємо при виклиці нашої функції
+function function3(a = 0, b = 0) {
+  console.log(a);
+  console.log(b);
+  console.log(a + b);
 }
 
-// ------------------------  PUSH,POP,SHIFT,UNSHIFT ----------------------//
+function3(10, 20);
 
-const number = [1, 2, 3, 4, 5];
-// Метод пуш повертає кількість елементів в масиві
-number.push(6, 7, 8, 9, 10);
+function hello(name) {
+  // return - завершує виконання функції та повертає її результат
+  if (typeof name === "undefined") {
+    console.log("Імʼя не вказано але привіт");
+    return;
+  }
 
-console.log(number);
-// pop - Видаляє елемент з кінця масиву та повератає вам видалений елемент
-console.log(number.pop());
+  // if (typeof name === "undefined") {
+  //   console.log(`Привіт, Anonym`);
+  // }
+  console.log(`Привіт, ${name}`);
+}
 
-console.log(number);
+hello();
 
-number.unshift(0);
+function name(params) {
+  const a = 5;
+}
 
-console.log(number);
-// shift - він дозволяє видаляти з початку масиву
-number.shift();
+const add = function () {
+  // arguments - дозволяє отримати всі аргументи які користувач відправив нам для обробки але у вигляді псевдомасиву
 
-console.log(number);
+  // Щоб перетворити псевдомасив в масив  Array.from()
+  const args = Array.from(arguments);
+  console.log(args);
+};
 
-// -------------------------- SLICE ,SPLICE --------------------------- //
+add(1, 2, 3, 4, 4, 5, 6, 67, 78, 8, 9, 9, 10);
 
-//
-const newNumbers = number.slice();
+function getSum(number1 = 0, number2 = 0) {
+  // typeof - повертає тип даних який зберігається у змінній
+  console.log(typeof number1);
+  console.log(typeof number2);
+  // якщо параметри числа то додаються як числа
+  if (typeof number1 === "number" && typeof number2 === "number") {
+    console.log(number1 + number2);
+  }
+  // якщо хоча б один елемент є строкою ми додаєм їх як строки
+  if (typeof number1 === "string" || typeof number2 === "string") {
+    console.log(number1 + number2);
+  }
 
-newNumbers.push(11, 12, 13, 14, 15);
-
-const startNumbers = newNumbers.slice(0, 5);
-console.log(number);
-console.log(startNumbers);
-console.log(newNumbers);
-
-const spliceNumbers = newNumbers.splice(
-  5,
-  7,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22,
-  23,
-  24,
-  25,
-  26
-);
-
-console.log(spliceNumbers);
-console.log(newNumbers);
-
-const number1 = [1, 2, 3, 4, 5];
-const number2 = [6, 7, 8, 9, 10];
-const number3 = [11, 12, 13, 14, 15];
-
-const number1PlusNumber2 = number2.concat(number1, number3);
-
-console.log(number1PlusNumber2);
-
-const strings = ["A", "B", "C", "D", "E"];
-const strings2 = ["AB", "BC", "CD", "DE", "EF"];
-
-console.log(strings.concat(strings2));
+  // console.log("number1: ", number1);
+  // console.log("number2: ", number2);
+  // console.log("sum: ", number1 + number2);
+}
