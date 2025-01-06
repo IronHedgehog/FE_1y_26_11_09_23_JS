@@ -80,3 +80,8 @@ const number3 = [11, 12, 13, 14, 15];
 const number1PlusNumber2 = number2.concat(number1, number3);
 
 console.log(number1PlusNumber2);
+
+const strings = ["A", "B", "C", "D", "E"];
+const strings2 = ["AB", "BC", "CD", "DE", "EF"];
+
+console.log(strings.concat(strings2));
