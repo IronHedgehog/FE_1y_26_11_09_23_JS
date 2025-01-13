@@ -1,15 +1,36 @@
-// Створити скрипт, який виводить в консоль на екран всі числа , які менші за n. Якщо зустрічається число, що більше або дорівнює n, цикл повинен бути закінчений за допомогою break.
+// Створіть функцію processArray(array, callback), яка приймає масив та функцію-колбек. Викличте processArray з різними масивами та функціями-колбеками, щоб виконати наступні операції:
 
-const n = 50;
+// Порахувати суму всіх елементів масиву.
+// Знайти мінімальний елемент масиву.
+// Знайти максимальний елемент масиву.
+// Перепишіть колбек-функції на стрілки
 
-const array = [
-  15, 20, 60, 40, 50, 55, 15, 20, 60, 40, 50, 55, 15, 20, 60, 40, 50, 55,
-];
+// const processArray = (array, callback) => {
 
-for (let i = 0; i < array.length; i++) {
-  const element = array[i];
-  if (element >= n) {
-    break;
-  }
-  console.log(element);
-}
+// };
+// const getSum = function(arr) {return arr.reduce((acc, curr) => acc + curr)}
+
+// const getMin = function(arr) {return Math.min(...arr)}
+
+// const getMax = function(arr) {return Math.max(...arr)}
+
+// 2. Створіть функцію operate(a, b, callback), яка приймає два числа та колбек для виконання операції над ними. Використайте її для виконання наступних операцій:
+
+// Додавання.
+// Віднімання.
+// Множення.
+// Ділення.
+// Перепишіть колбеки на стрілкові функції
+
+// const operate = (a, b, callback) => {
+
+// };
+
+// // Виклик функції з різними операціями
+// console.log(operate(10, 5, function(a, b){ return a - b})); // Віднімання
+
+// console.log(operate(10, 5, function(a, b){ return a + b})); // Додавання
+
+// console.log(operate(10, 5, function(a, b){ return a * b})); // Множення
+
+// console.log(operate(10, 5, function(a, b){ return a / b})); // Ділення
