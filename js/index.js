@@ -1,4 +1,5 @@
 getSum();
+// ab(5, 5);
 
 // function - створи(задекларуй) нам функцію
 // name - імʼя функції (англ.букв. get put patch post, )
@@ -76,3 +77,21 @@ function getSum(number1 = 0, number2 = 0) {
   // console.log("number2: ", number2);
   // console.log("sum: ", number1 + number2);
 }
+// Функціональний вираз
+const ab = function (material, robitnik) {
+  console.log(material + robitnik);
+};
+
+ab("Derevo", false);
+
+console.log(Number("asd"));
+
+console.log(prompt("null"));
+
+console.log(typeof ab);
+// function declaration
+// function ab(a, b) {
+//   console.log(a + b);
+// }
+
+// ab();
