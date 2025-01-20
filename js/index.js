@@ -1,69 +1,50 @@
-// колбек - функція яка сама по собі ніколи не відпрацьовує(сервісна функція)
-const getMaterials = function (money) {
-  console.log(`За такі кошти (${money}) ми пропунуємо такі матеріали`);
+const book = {
+  // ключ - ЗАВЖДИ СТРОКА: значення - може бути, будь яким.
+  author: "Petro",
+  title: "Around the world",
+  genre: ["fantasy", "action"],
+  amountOfStorinka: 500,
 };
-// колбек - функція яка сама по собі ніколи не відпрацьовує(сервісна функція яка викликається у інших функціях(функціях вищого порядку))
-const builders = function (money) {
-  console.log(`За такі кошти (${money}) ми пропунуємо таких робітників`);
-};
+// Якщо ми хочемо використати дані, будь-якого, поля обʼєкта ми маємо звернутись за імʼям до обʼєкта та через крапку обрати необхідний ключ
+console.log(`Я прочитав класну книгу під назвою ${book.title}`);
 
-// Функція вищого порядку(приймає параметрами інші функції)
-const buildHouse = function (money, getMaterials, builders) {
-  getMaterials(money);
-};
+console.log(`Я прочитав класну книгу під назвою ${book["title"]}`);
+// delete - видаляє властивості обʼєкта
+delete book.title;
 
-buildHouse(1000, getMaterials, builders);
+console.log(book);
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//callback
-const filter = function (arr, userChoice) {
-  // const filteredArr = [];
+book.year = 2025;
+console.log(book.year);
 
-  // return filteredArr;
+console.log(book);
+//
 
-  // for (let i = 0; i < arr.length; i++) {
-  //   const element = arr[i];
-  //   if (element.incl) {
-  //     filteredArr.push(element);
-  //   }
-  // }
+const bookTitle = "test book";
 
-  return !arr.includes(userChoice);
-};
+const bookYear = 2025;
 
-const filterModified = (arr, userChoice) => !arr.includes(userChoice);
+const bookAuthor = "Test author";
 
-// Функція вищого порядку
-const userInput = function (filter) {
-  const input = [1];
-  while (true) {
-    const userInput = prompt(
-      "Введіть значення. Якщо воно вже існує, його не буде додано."
-    );
-    if (userInput === null) break;
-    if (filter(input, userInput)) {
-      input.push(userInput);
-    } else {
-      console.log("Елемент вже є");
-    }
-  }
-  console.log(input);
+const newBook = {
+  bookTitle,
+  bookYear,
+  bookAuthor,
 };
 
-// userInput(filter);
-
-// const add = function (a, b, c) {
-//   console.log(a + b + c);
-// };
-
-// add(1, 2, 3);
-// =>
-const add = (a, b, c) => {
-  return a + b + c;
-  // console.log(a - b - c);
+const library = {
+  name: "Library",
+  amountOfBooks: 1000,
+  books: [],
+  // ES5
+  addBook: function (title) {
+    // this - контекст
+    // this В  ОБ'ЄКТІ завжди є посиланням на обʼєкто в якому знаходиться
+    // this === library
+    this.books.push(title);
+  },
 };
-add(1, 2, 3);
 
-const t = (x) => console.log(x);
+library.addBook("test title");
 
-const y = () => console.log(2);
+console.log(library);
