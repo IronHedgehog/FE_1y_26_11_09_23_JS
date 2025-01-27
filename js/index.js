@@ -48,3 +48,25 @@ const library = {
 library.addBook("test title");
 
 console.log(library);
+
+let cards = [
+  "Завдання 1", // 0
+  "Завдання 2", // видалити 1
+  "Завдання 3", // оновити 2
+  "Завдання 4", // 3
+  "Завдання 5", //після 5 додати 6 карточку 4
+];
+
+const cardIndexToDelete = cards.indexOf("Завдання 2");
+
+cards.splice(cardIndexToDelete, 1);
+console.log(cards);
+
+const cardIndexToUpdate = cards.indexOf("Завдання 3");
+
+cards.splice(cardIndexToUpdate, 1, "ОНОВЛЕНО");
+
+console.log(cards);
+
+cards.splice(5, 0, "GG");
+console.log(cards);
