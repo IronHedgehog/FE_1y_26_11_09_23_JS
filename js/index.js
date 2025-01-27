@@ -1,72 +1,76 @@
 const book = {
-  // ключ - ЗАВЖДИ СТРОКА: значення - може бути, будь яким.
-  author: "Petro",
-  title: "Around the world",
-  genre: ["fantasy", "action"],
-  amountOfStorinka: 500,
-};
-// Якщо ми хочемо використати дані, будь-якого, поля обʼєкта ми маємо звернутись за імʼям до обʼєкта та через крапку обрати необхідний ключ
-console.log(`Я прочитав класну книгу під назвою ${book.title}`);
-
-console.log(`Я прочитав класну книгу під назвою ${book["title"]}`);
-// delete - видаляє властивості обʼєкта
-delete book.title;
-
-console.log(book);
-
-book.year = 2025;
-console.log(book.year);
-
-console.log(book);
-//
-
-const bookTitle = "test book";
-
-const bookYear = 2025;
-
-const bookAuthor = "Test author";
-
-const newBook = {
-  bookTitle,
-  bookYear,
-  bookAuthor,
+  author: "name",
+  isOk: true,
+  quantity: 100,
 };
 
-const library = {
-  name: "Library",
-  amountOfBooks: 1000,
-  books: [],
-  // ES5
-  addBook: function (title) {
-    // this - контекст
-    // this В  ОБ'ЄКТІ завжди є посиланням на обʼєкто в якому знаходиться
-    // this === library
-    this.books.push(title);
+const human = {
+  weight: 3,
+  goWalk: function () {
+    console.log("Пішов гулять");
   },
 };
 
-library.addBook("test title");
+const city = {
+  name: "Kyiv",
+  geolocation: {
+    longitude: 10230123,
+    drygii: 18927398178923,
+  },
+  languages: ["UK", "UA"],
+};
 
-console.log(library);
+console.log(human.weight);
 
-let cards = [
-  "Завдання 1", // 0
-  "Завдання 2", // видалити 1
-  "Завдання 3", // оновити 2
-  "Завдання 4", // 3
-  "Завдання 5", //після 5 додати 6 карточку 4
-];
+human.goWalk();
 
-const cardIndexToDelete = cards.indexOf("Завдання 2");
+// FOR...IN..
 
-cards.splice(cardIndexToDelete, 1);
-console.log(cards);
+for (const key in book) {
+  console.log("KEYS, ", key); // ключі
+  console.log("Value, ", book[key]); // значення
+}
 
-const cardIndexToUpdate = cards.indexOf("Завдання 3");
+const empty = {};
+// OBJECT
+// keys - завжди масив ключів обʼєкту
+const keys = Object.keys(empty);
+console.log(keys);
+// .values - завжди масив значень обʼєкту
+const values = Object.values(human);
+console.log(values);
+// .entries - завжди масив масивів  ключ значення
+const entries = Object.entries(city);
+console.log(entries);
 
-cards.splice(cardIndexToUpdate, 1, "ОНОВЛЕНО");
+// ...REST - збір значень у масив ...Spread - розпорошення
 
-console.log(cards);
+const numbers = [123, 1, 4, 4, 67, -20, 674, 56, 34, 412, 31, 45, 34, 6];
 
-cards.splice(5, 0, "GG");
-console.log(cards);
+// console.log(object);
+
+console.log(Math.min(...numbers));
+console.log(
+  Math.min(12, 3, 45, 64, 6, 3424, 12, 3, 15, 36, 43, 12, 3, 123, 1, 23)
+);
+
+function calculator(a, b, c, ...rest) {
+  console.log(a, b, c, rest);
+}
+
+calculator(1, 23, 4, 45, 6, 5, 67, 3, 1, 23, 1, 23);
+
+const copyNumbers = numbers.slice();
+console.log(copyNumbers);
+console.log(numbers);
+// console.log(copyNumbers === numbers);
+
+const copyCopyNumbers = [...copyNumbers];
+console.log(copyCopyNumbers);
+
+const bookPlus = { book2: "cool", ...book, book3: "awesome", book4: "LUX" };
+
+const bookPLUSPLUS = { ...bookPlus, book2: "bad", book3: "neLux" };
+
+console.log(bookPlus);
+console.log(bookPLUSPLUS);
