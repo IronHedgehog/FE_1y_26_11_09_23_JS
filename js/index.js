@@ -1,76 +1,112 @@
+const obj = {
+  // властивість обʼєкту - це пара ключ значення
+  name: "Petro",
+  age: 40,
+  chill: function (time) {
+    console.log(`${this.name} відпочиває ${time} часу`);
+  },
+};
+// 1) -  const
+// 2) {}, [] - деструктуризація
+// 3) = назва елементу для деструктуризації
+// 4) Вписати в середину назву ключа значення якого вам потрібно
+// const { a, b, c } = obj;
+
+// Параметри за замовчуванням
+const { name: userName = "Artem", age: userAge = 40, c = 1 } = obj;
+
+const name = "milk";
+
+// console.log(a, b, c);
+
 const book = {
-  author: "name",
-  isOk: true,
-  quantity: 100,
-};
-
-const human = {
-  weight: 3,
-  goWalk: function () {
-    console.log("Пішов гулять");
+  title: "rings",
+  year: 2000,
+  author: "Author",
+  object: {
+    yearrr: 300,
+    asd: "qwe",
   },
+  arr: [1, 2, 3],
 };
 
-const city = {
-  name: "Kyiv",
-  geolocation: {
-    longitude: 10230123,
-    drygii: 18927398178923,
-  },
-  languages: ["UK", "UA"],
+const { title, ...bookVlastivosti } = book;
+
+console.log(title, bookVlastivosti);
+
+const {
+  object: { yearrr, asd },
+  arr: [item1, item2, item3],
+} = book;
+
+console.log(yearrr, asd, item1, item2, item3);
+
+const arr = [1, 2, 3, 4, 545, 6, 7, 8, 8, 10];
+
+const [firstElement] = arr;
+console.log(firstElement);
+
+const [item11, item22, item4, ...rest] = arr;
+
+let red, green, blue; //rgb
+
+// [red, green, blue] = arr;
+
+const [, , , , , , , item1111] = arr;
+// console.log(red, green, blue);
+console.log(item1111);
+
+const arr2 = [1, 2];
+
+const [first, second] = arr2;
+
+console.log(first, second);
+
+console.log(arr2[0], arr2[1]);
+
+const musicLibrary = {
+  count: 1,
+  artists: [
+    {
+      name: "The Beatles",
+      albums: [
+        {
+          title: "Sgt. Pepper's Lonely Hearts Club Band",
+          year: 1967,
+          tracks: [
+            { title: "With a Little Help from My Friends", duration: "2:44" },
+            { title: "Lucy in the Sky with Diamonds", duration: "3:28" },
+            { title: "A Day in the Life", duration: "5:33" },
+          ],
+        },
+      ],
+    },
+  ],
 };
 
-console.log(human.weight);
+const {
+  artists: [
+    {
+      albums: [
+        {
+          tracks: [{ title: track1 }, { title: track2 }],
+        },
+      ],
+    },
+  ],
+} = musicLibrary;
 
-human.goWalk();
+const artists = musicLibrary.artists;
 
-// FOR...IN..
-
-for (const key in book) {
-  console.log("KEYS, ", key); // ключі
-  console.log("Value, ", book[key]); // значення
+for (let index = 0; index < artists.length; index++) {
+  const element = artists[index];
+  const albums = element.albums;
+  for (let index = 0; index < albums.length; index++) {
+    const element = albums[index];
+    const track = element.tracks;
+    for (let index = 0; index < track.length; index++) {
+      const element = track[index];
+      console.log(element.title, element.duration);
+    }
+  }
 }
-
-const empty = {};
-// OBJECT
-// keys - завжди масив ключів обʼєкту
-const keys = Object.keys(empty);
-console.log(keys);
-// .values - завжди масив значень обʼєкту
-const values = Object.values(human);
-console.log(values);
-// .entries - завжди масив масивів  ключ значення
-const entries = Object.entries(city);
-console.log(entries);
-
-// ...REST - збір значень у масив ...Spread - розпорошення
-
-const numbers = [123, 1, 4, 4, 67, -20, 674, 56, 34, 412, 31, 45, 34, 6];
-
-// console.log(object);
-
-console.log(Math.min(...numbers));
-console.log(
-  Math.min(12, 3, 45, 64, 6, 3424, 12, 3, 15, 36, 43, 12, 3, 123, 1, 23)
-);
-
-function calculator(a, b, c, ...rest) {
-  console.log(a, b, c, rest);
-}
-
-calculator(1, 23, 4, 45, 6, 5, 67, 3, 1, 23, 1, 23);
-
-const copyNumbers = numbers.slice();
-console.log(copyNumbers);
-console.log(numbers);
-// console.log(copyNumbers === numbers);
-
-const copyCopyNumbers = [...copyNumbers];
-console.log(copyCopyNumbers);
-
-const bookPlus = { book2: "cool", ...book, book3: "awesome", book4: "LUX" };
-
-const bookPLUSPLUS = { ...bookPlus, book2: "bad", book3: "neLux" };
-
-console.log(bookPlus);
-console.log(bookPLUSPLUS);
