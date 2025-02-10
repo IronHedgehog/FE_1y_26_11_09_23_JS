@@ -1,112 +1,115 @@
-const obj = {
-  // властивість обʼєкту - це пара ключ значення
-  name: "Petro",
-  age: 40,
-  chill: function (time) {
-    console.log(`${this.name} відпочиває ${time} часу`);
-  },
-};
-// 1) -  const
-// 2) {}, [] - деструктуризація
-// 3) = назва елементу для деструктуризації
-// 4) Вписати в середину назву ключа значення якого вам потрібно
-// const { a, b, c } = obj;
+// impera - рецепт фільтрації масиву
 
-// Параметри за замовчуванням
-const { name: userName = "Artem", age: userAge = 40, c = 1 } = obj;
+const numbers = [12, 3, 45, 2, 3, 46];
+const filteredArray = [];
 
-const name = "milk";
-
-// console.log(a, b, c);
-
-const book = {
-  title: "rings",
-  year: 2000,
-  author: "Author",
-  object: {
-    yearrr: 300,
-    asd: "qwe",
-  },
-  arr: [1, 2, 3],
-};
-
-const { title, ...bookVlastivosti } = book;
-
-console.log(title, bookVlastivosti);
-
-const {
-  object: { yearrr, asd },
-  arr: [item1, item2, item3],
-} = book;
-
-console.log(yearrr, asd, item1, item2, item3);
-
-const arr = [1, 2, 3, 4, 545, 6, 7, 8, 8, 10];
-
-const [firstElement] = arr;
-console.log(firstElement);
-
-const [item11, item22, item4, ...rest] = arr;
-
-let red, green, blue; //rgb
-
-// [red, green, blue] = arr;
-
-const [, , , , , , , item1111] = arr;
-// console.log(red, green, blue);
-console.log(item1111);
-
-const arr2 = [1, 2];
-
-const [first, second] = arr2;
-
-console.log(first, second);
-
-console.log(arr2[0], arr2[1]);
-
-const musicLibrary = {
-  count: 1,
-  artists: [
-    {
-      name: "The Beatles",
-      albums: [
-        {
-          title: "Sgt. Pepper's Lonely Hearts Club Band",
-          year: 1967,
-          tracks: [
-            { title: "With a Little Help from My Friends", duration: "2:44" },
-            { title: "Lucy in the Sky with Diamonds", duration: "3:28" },
-            { title: "A Day in the Life", duration: "5:33" },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-const {
-  artists: [
-    {
-      albums: [
-        {
-          tracks: [{ title: track1 }, { title: track2 }],
-        },
-      ],
-    },
-  ],
-} = musicLibrary;
-
-const artists = musicLibrary.artists;
-
-for (let index = 0; index < artists.length; index++) {
-  const element = artists[index];
-  const albums = element.albums;
-  for (let index = 0; index < albums.length; index++) {
-    const element = albums[index];
-    const track = element.tracks;
-    for (let index = 0; index < track.length; index++) {
-      const element = track[index];
-      console.log(element.title, element.duration);
-    }
+for (let i = 0; i < numbers.length; i++) {
+  const element = numbers[i];
+  if (element < 20) {
+    filteredArray.push(element);
   }
 }
+
+// console.log(filteredArray);
+
+// Declaration code - Замовлення готового результату
+const declarationNumbers = [100, 200, 300, 400, 1, 2, 3, 4, 1012, 20102];
+
+const declarationFilterNumbers = declarationNumbers.filter((number) => {
+  return number < 1000;
+});
+
+// console.log(declarationFilterNumbers);
+
+// Функції з побічними ефектами(Видозмінює початковий вигляд параметрів які ми передаєм)
+// console.log("ДО : ", numbers);
+
+const dirtyAdd = (arr, value) => {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] + value;
+  }
+  return arr;
+};
+
+// console.log(dirtyAdd(numbers, 10));
+
+// console.log("Після :", numbers);
+
+// чиста функція(функція,що не видозмінює початкові дані)
+
+const pureAdd = (arr, value) => {
+  const addedArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    addedArr.push(arr[i] + value);
+  }
+  return addedArr;
+};
+
+// console.log("pureAdd :", pureAdd(declarationNumbers, 1000));
+
+// console.log("default:", declarationNumbers);
+
+const arr = [1, 2, 3, 4, 5];
+// функція з домішками (псує початкові дані)
+function dirty(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = arr[i] / 2;
+  }
+
+  return arr;
+}
+
+// console.log("Результат роботи функції з домішками ", dirty(arr));
+
+// console.log("Початковий масив", arr);
+
+function pure(arr) {
+  const result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i] * 2);
+  }
+  console.log(result);
+  return result;
+}
+
+// console.log("Результат роботи чистої функції ", pure(arr));
+
+// console.log("Початковий масив", arr);
+
+// Перебираючі методи масиву
+
+// foreach
+
+const arr1 = [1, 2, 3, 4, 5];
+
+for (let i = 0; i < arr1.length; i++) {
+  console.log(arr1[i]);
+}
+
+arr1.forEach((number, index) => {
+  console.log(number, index);
+});
+
+const multi = arr1.map((number) => {
+  return number / 2;
+});
+
+console.log(multi);
+
+console.log(arr1);
+
+const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const filterArr3 = arr3.filter((number) => {
+  return number < 9;
+});
+
+console.log(filterArr3);
+
+const findTen = arr3.find((number) => {
+  return number === 11;
+});
+
+console.log(findTen);
