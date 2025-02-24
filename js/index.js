@@ -1,159 +1,110 @@
-const users = [
-  {
-    id: "701b29c3-b35d-4cf1-a5f6-8b12b29a5081",
-    name: "Moore Hensley",
-    email: "moorehensley@indexia.com",
-    eyeColor: "blue",
-    friends: ["Sharron Pace"],
-    isActive: false,
-    balance: 2811,
+// Spaghetti code - процедурний коді
 
-    skills: ["ipsum", "lorem"],
-    gender: "male",
-    age: 37,
+const name = "Petro";
+const yearOfBirth = 1990;
+
+const calculateAge = (yearOfBirth) => {
+  const yearNow = 2025;
+  return yearNow - yearOfBirth;
+};
+
+console.log(calculateAge(yearOfBirth));
+
+const petro = {
+  name: "Petro",
+  yearOfBirth: 1990,
+
+  calculateAge: function () {
+    return 2025 - this.yearOfBirth;
   },
-  {
-    id: "7a3cbd18-57a1-4534-8e12-1caad921bda1",
-    name: "Sharlene Bush",
-    email: "sharlenebush@tubesys.com",
-    eyeColor: "blue",
-    friends: ["Briana Decker", "Sharron Pace"],
-    isActive: true,
-    balance: 3821,
+};
 
-    skills: ["tempor", "mollit", "commodo", "veniam", "laborum"],
-    gender: "female",
-    age: 34,
-  },
-  {
-    id: "88beb2f3-e4c2-49f3-a0a0-ecf957a95af3",
-    name: "Ross Vazquez",
-    email: "rossvazquez@xinware.com",
-    eyeColor: "green",
-    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-    isActive: false,
-    balance: 3793,
+console.log(petro.calculateAge());
 
-    skills: ["nulla", "anim", "proident", "ipsum", "elit"],
-    gender: "male",
-    age: 24,
-  },
-  {
-    id: "249b6175-5c30-44c6-b154-f120923736f5",
-    name: "Elma Head",
-    email: "elmahead@omatom.com",
-    eyeColor: "green",
-    friends: ["Goldie Gentry", "Aisha Tran"],
-    isActive: true,
-    balance: 2278,
+// До ES6
+//Стрілка вона не має ключового методу this
+// Конструктор
+const Human = function (name, yearOfBirth) {
+  //console.log(this); // Human {}
+  this.name = name;
+  this.yearOfBirth = yearOfBirth;
 
-    skills: ["adipisicing", "irure", "velit"],
-    gender: "female",
-    age: 21,
-  },
-  {
-    id: "334f8cb3-eb04-45e6-abf4-4935dd439b70",
-    name: "Carey Barr",
-    email: "careybarr@nurali.com",
-    eyeColor: "blue",
-    friends: ["Jordan Sampson", "Eddie Strong"],
-    isActive: true,
-    balance: 3951,
+  // НІКОЛИ ТАК НЕ РОБИТИ
+  // this.calculateAge =function () {
+  //   return 2025 - this.yearOfBirth;
+  // };
+};
 
-    skills: ["ex", "culpa", "nostrud"],
-    gender: "male",
-    age: 27,
-  },
-  {
-    id: "150b00fb-dd82-427d-9faf-2879ea87c695",
-    name: "Blackburn Dotson",
-    email: "blackburndotson@furnigeer.com",
-    eyeColor: "brown",
-    friends: ["Jacklyn Lucas", "Linda Chapman"],
-    isActive: false,
-    balance: 1498,
+Human.prototype.calculateAge = function () {
+  return 2025 - this.yearOfBirth;
+};
 
-    skills: ["non", "amet", "ipsum"],
-    gender: "male",
-    age: 38,
-  },
-  {
-    id: "e1bf46ab-7168-491e-925e-f01e21394812",
-    name: "Sheree Anthony",
-    email: "shereeanthony@kog.com",
-    eyeColor: "brown",
-    friends: ["Goldie Gentry", "Briana Decker"],
-    isActive: true,
-    balance: 2764,
+// const obj = Object.create();
 
-    skills: ["lorem", "veniam", "culpa"],
-    gender: "female",
-    age: 39,
-  },
-];
+const petro1 = new Human("Petro", 1990);
 
-const numbers = [1, 2, 3, 4, 5];
+// 1. NEW - створює пустний новий обʼєкт
+// 2. КОли ми викликаємо функцію. this = {}
+// 3. {} - повʼязаний з прототипом
+// 4. Функція автоматично повертає {}
+console.log(petro1);
 
-// 0 - акумулятор
-console.log(
-  numbers.reduce((acc, number) => {
-    console.log(acc);
-    console.log(number);
-    return acc + number;
-  }, 0)
-);
+const Maksim = new Human("Maksim", 2000);
+console.log(Maksim.calculateAge());
+const Yuna = new Human("Yuna", 2001);
 
-console.log(
-  users.reduce((acc, user) => {
-    return acc + user.balance;
-  }, 0)
-);
+console.log(Yuna.calculateAge());
 
-console.log(
-  numbers.reduce((acc, number, idx) => {
-    // push - повертає довжину оновленого масиву після додавання
-    // acc.push(idx);
-    // return acc
-    console.log(acc);
-    acc.push(idx);
-    return acc;
-  }, [])
-);
+const arr = [1, 2, 3, 45, 6];
 
-// Метод reduce - може збирати, може збирати обʼєкти(Він може замінити всі перебираючі методи масиву)
+// function plus(arr) {
+//   return arr[1] + 10;
+// }
 
-// Метод sort
+Array.prototype.plus = function () {
+  return (this[0] += 10);
+};
 
-const numbers2 = [5, 3, 2, 4, 1, 0, 7, 6, 10, 8, 9, 11, 12, 13, 14, 21, 35, 46];
+//  Креслення вашого обʼєкту
+// Клас - синтаксичний цукор
+// oop - 4 принципи
+// Абстракція
+// Інкапсуляція - дозволяє закрити ваші поля конструктору у середині класу
+// Наслідування
+// Поліморфізм
 
-console.log(numbers2.sort());
-console.log(
-  numbers2.sort((number1, number2) => {
-    return number2 - number1;
-  })
-);
+class User {
+  // Приватні властивості(Властивості доступ до яких буде лише у середині цього класу) мають бути оголошень обовʼязково, до конструктора
+  #email;
+  #yearOfBirth;
+  #password;
 
-console.log(
-  numbers2.sort((number1, number2) => {
-    return number1 - number2;
-  })
-);
+  constructor(email, yearOfBirth, password, nickname) {
+    this.#email = email;
+    this.#yearOfBirth = yearOfBirth;
+    this.#password = password;
+    this.nickname = nickname;
+  }
 
-const names = ["Artem", "Yuna", "Olexandr", "Max", "Nikita"];
+  calculateAge() {
+    console.log(2025 - this.yearOfBirth);
+    return 2025 - this.age;
+  }
 
-console.log(names.sort());
+  get email() {
+    return this.#email;
+  }
 
-const abc = ["b", "c", "w", "r"];
+  set email(newEmail) {
+    return (this.#email = newEmail);
+  }
+}
 
-console.log(
-  abc.sort((a, b) => {
-    return a.localeCompare(b);
-  })
-);
+const petro2 = new User("asd@asd.com", 1990, "QWERTY12345!", "Petia");
 
-console.table(
-  users
-    .filter((user) => user.eyeColor === "brown")
-    .sort((a, b) => b.balance - a.balance)
-    .map((user) => user.name)
-);
+petro2.calculateAge();
+console.log(petro2.email);
+petro2.email = "petro@gmail.com";
+
+console.log(petro2);
+console.log(petro2.email);
