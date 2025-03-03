@@ -70,8 +70,8 @@ Array.prototype.plus = function () {
 // oop - 4 принципи
 // Абстракція
 // Інкапсуляція - дозволяє закрити ваші поля конструктору у середині класу
-// Наслідування
-// Поліморфізм
+// Наслідування - дозволяє не дублювати код а його наслідувати
+// Поліморфізм -(багато форм) - дозволяє переписувати одну і ту ж  функцію у різних класах під потреби класу
 
 class User {
   // Приватні властивості(Властивості доступ до яких буде лише у середині цього класу) мають бути оголошень обовʼязково, до конструктора
@@ -87,8 +87,8 @@ class User {
   }
 
   calculateAge() {
-    console.log(2025 - this.yearOfBirth);
-    return 2025 - this.age;
+    console.log("Вік користувача");
+    return 2025 - this.yearOfBirth;
   }
 
   get email() {
@@ -108,3 +108,43 @@ petro2.email = "petro@gmail.com";
 
 console.log(petro2);
 console.log(petro2.email);
+// class expression
+// const Admin = class {
+
+// };
+// class declaration
+class Admin extends User {
+  constructor(email, password, yearOfBirth, nickname, permissions) {
+    // Дозволяє використовувати батьківський конструктор
+    super(email, yearOfBirth, password, nickname);
+    this.permissions = permissions;
+  }
+  calculateAge() {
+    console.log("Вік Адміна");
+  }
+}
+
+const Maxim = new Admin(
+  "Maxim@gmail.com",
+  "QWERTY12345@",
+  2005,
+  "MAX",
+  "ADMIN"
+);
+
+Maxim.calculateAge();
+
+class Author extends User {
+  constructor(email, yearOfBirth, password, nickname, plushka) {
+    super(email, yearOfBirth, password, nickname);
+
+    this.plushka = plushka;
+  }
+  calculateAge() {
+    console.log("Вік автора");
+  }
+}
+
+const contentMaker = new Author("Qwe", 123, "qwe", "qwe", "Make COntent");
+
+console.log(contentMaker.calculateAge());
