@@ -1,5 +1,7 @@
 const form = document.getElementById("form");
-const target = document.getElementById("target");
+const cursor = document.getElementById("cursor");
+const button = document.querySelector(".button");
+const img = document.querySelector(".fish");
 
 form.addEventListener("submit", onSubmit);
 
@@ -12,12 +14,16 @@ function onSubmit(e) {
 
 document.addEventListener("keydown", onKeyDown);
 document.addEventListener("keyup", onKeyUp);
-target.addEventListener("mousedown", onMouseDown);
-target.addEventListener("mouseup", onMouseUP);
-target.addEventListener("click", onClick);
-target.addEventListener("mousemove", onMouseMove);
+cursor.addEventListener("mousedown", onMouseDown);
+cursor.addEventListener("mouseup", onMouseUP);
+cursor.addEventListener("click", onClick);
+document.addEventListener("mousemove", onMouseMove);
+document.addEventListener("contextmenu", onRightClick);
+button.addEventListener("mouseover", onMouseOver);
+button.addEventListener("mouseout", onMouseOut);
 
 function onKeyDown(e) {
+  //
   e.preventDefault();
   // console.log(e);
   // console.log("code", e.code);
@@ -43,18 +49,36 @@ function onKeyUp(e) {
 }
 
 function onMouseDown(e) {
-  console.log("onMouseDown", e);
+  // console.log("onMouseDown", e);
 }
 function onMouseUP(e) {
-  console.log("onMouseUp", e);
+  // console.log("onMouseUp", e);
 }
 function onClick(e) {
-  console.log("onClcik", e);
+  // console.log("onClick", e);
 }
 
 function onMouseMove(e) {
-  console.log("e.clientX", e.clientX);
-  console.log("e.clientY", e.clientY);
-  console.log("e.pageX", e.pageX);
-  console.log("e.pageY", e.pageY);
+  // console.log("e.clientX", e.clientX);
+  // console.log("e.clientY", e.clientY);
+  // console.log("e.pageX", e.pageX);
+  // console.log("e.pageY", e.pageY);
+
+  cursor.style.top = `${e.pageY + 20}px`;
+  cursor.style.left = `${e.pageX + 20}px`;
+  // console.log(cursor);
+}
+
+function onRightClick(e) {
+  // e.preventDefault();
+  console.log("asd");
+}
+
+function onMouseOver(e) {
+  console.log(e);
+  img.src = "";
+}
+
+function onMouseOut(e) {
+  img.src = "../riba.png";
 }
